@@ -16,3 +16,18 @@ Convert MHDB google sheets spreadsheets to a postgres DB and Django Rest Framewo
 [  ] replace sqlite database with postrgres  
 [  ] see if GraphQL provides more flexible querying (see [django-restql](https://github.com/yezyilomo/django-restql))  
 [  ] 
+
+
+## Current Schema
+
+To update run
+
+```python
+python manage.py graph_models assessments -o ../models.png
+```
+
+![current Entity Relationship Diagram](./models.png)
+
+## Notes & references
+
+http://www.codekoala.com/posts/using-django-design-your-database-schema/ 

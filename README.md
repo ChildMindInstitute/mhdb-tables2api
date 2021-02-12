@@ -1,4 +1,5 @@
 # mhdb-tables2api
+___in progress___  
 
 Convert MHDB google sheets spreadsheets to a postgres DB and Django Rest Framework API.
 
@@ -9,7 +10,8 @@ Convert MHDB google sheets spreadsheets to a postgres DB and Django Rest Framewo
 
 ## To Do
 
-[X] Set Up DRF boilerplate
+[X] Set Up DRF boilerplate  
+[  ] Add correct licence details    
 [  ] define schema & create models  
 [  ] create fixtures to populate the database  
 [  ] dockerize rest api  

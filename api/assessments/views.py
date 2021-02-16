@@ -1,5 +1,4 @@
 from rest_framework import viewsets
-# Create your views here.
 
 from assessments.models import Questionnaire, Author
 from assessments.serializers import QuestionnaireSerializer, AuthorSerializer

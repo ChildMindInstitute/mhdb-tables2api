@@ -1,16 +1,3 @@
-#!/usr/bin/env python
-"""
-This program converts specific mental health spreadsheet workbooks to a postgres database & DRF rest api.
-See header_comment below for more information. The database is licensed under the terms of the Creative Commons BY license.
-Current information can be found on the website, https://matter.childmind.org.
-Authors:
-    - Arno Klein, 2017-2020 (arno@childmind.org)  http://binarybottle.com
-    - Jon Clucas, 2017–2018 (jon.clucas@childmind.org)
-Copyright 2020, Child Mind Institute MATTER Lab (https://matter.childmind.org),
-Apache v2.0 License
-"""
-
-
 import os
 import sys
 import numpy as np
@@ -52,7 +39,7 @@ def download_google_sheet(filepath, docid):
 
 def main():
   
-    config = CONFIG()
+    config = Config()
 
     for sheet_name, doc_id in config.googlesheet_uids.items():
         try:

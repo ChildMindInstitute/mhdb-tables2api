@@ -1,7 +1,7 @@
 from django.db import models
 
 from django.contrib.auth.models import User
-
+from resources.models import Language
 
 
 ### models to be defined in another module
@@ -17,21 +17,12 @@ class Age(models.Model):
 class Disorder(models.Model):
     pass
 
-
-# move to resources module
-class Language(models.Model):
-
-    index = models.PositiveIntegerField()
-    name = models.CharField(max_length=100)
-    index_language = models.ForeignKey('self', null=True, on_delete=models.CASCADE)
-    snomedct_id = models.PositiveIntegerField()
-
-
-
 class Author(models.Model):
     
     name = models.CharField(max_length=200, null=True, unique=True)
-
+    
+    def __str__(self):
+        return f"{self.name}"
 
 class Reference(models.Model):
 
@@ -45,6 +36,9 @@ class Reference(models.Model):
     PubMedID = models.PositiveIntegerField(null=True)
     cogatlas_node_id = models.PositiveIntegerField(null=True)   
     cogatlas_prop_id = models.PositiveIntegerField(null=True)
+
+    def __str__(self):
+        return f"{self.index}: {self.title[:15]}... "
 
 
 class Questionnaire(models.Model):
@@ -63,7 +57,7 @@ class Questionnaire(models.Model):
     # ANIRUDH: LEFT column
     index_license = models.PositiveIntegerField(null=True) #change to foreign keys at a later date
     index_language = models.ForeignKey(Language, null=True, on_delete=models.SET_NULL)
-    # indices_language_not_in_mhdb = models.ManyToManyField(Language) # what is this column for?
+    # indices_language_not_in_mhdb = models.ManyToManyField(Language) # exclude for now, indicates languages that the assessment is available in but which have not been added to mindlogger.
     # LEFT column errors                
     indices_respondent = models.ManyToManyField('Respondent')    # need to find this table in the spreadsheets
     indices_subject = models.ManyToManyField('Subject')       # need to find this table in the spreadsheets
@@ -81,6 +75,8 @@ class Questionnaire(models.Model):
     # indices_disorder_subcategory      # this field in the the disorder table
     # indices_disorder_subsubcategory   # this field in the the disorder table
 
+    def __str__(self):
+        return f"{self.index}: {self.title[:15]}... "
 
 class Question(models.Model):
     
@@ -88,4 +84,5 @@ class Question(models.Model):
     text = models.CharField(max_length=200)
     questionaires = models.ManyToManyField(Questionnaire) #https://docs.djangoproject.com/en/3.1/topics/db/models/#many-to-many-relationships
 
-
+    def __str__(self):
+        return f"{self.index}: {self.text[:15]}... "

@@ -28,9 +28,9 @@ class Language(models.Model):
 
 
 
-
 class Author(models.Model):
-    models.CharField(max_length=200)
+    
+    name = models.CharField(max_length=200, null=True, unique=True)
 
 
 class Reference(models.Model):

@@ -23,6 +23,9 @@ Convert MHDB google sheets spreadsheets to a postgres DB and Django Rest Framewo
 
 ## Questions
 
+_Q. Should we have an Authors Table or just in clude a text field?_  
+A.
+
 _Q. What data standards need to be enforced (allowing nulls, date field standards)?_  
 A.
 

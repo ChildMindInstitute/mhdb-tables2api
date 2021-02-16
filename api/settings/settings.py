@@ -47,6 +47,29 @@ INSTALLED_APPS = [
 
 ]
 
+REST_FRAMEWORK = {
+    # 'DEFAULT_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer',], uncomment this to remove browsable API
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100,
+    'DEFAULT_THROTTLE_RATES': {
+        'anon_burst':'10/minute',
+        'anon_sustained':'1000/hour',
+        'burst': '10/second',
+        'sustained':'100000/day',
+    },
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        # 'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES':[
+        # 'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_FILTER_BACKENDS':[
+        # 'django_filters.rest_framework.DjangoFilterBackend'
+        ],
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

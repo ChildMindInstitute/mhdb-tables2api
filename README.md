@@ -9,21 +9,50 @@ Convert MHDB google sheets spreadsheets to a postgres DB and Django Rest Framewo
 
 ## To Do
 
-[X] Set Up DRF boilerplate
-[  ] define schema & create models  
+[X] Set Up DRF boilerplate  
+[X] Download google spreadsheets   
+[ -> ] define schema & create models  
+[  ] remove api/*/migrations from gitignore after initial dev is finished    
 [  ] create fixtures to populate the database  
 [  ] dockerize rest api  
-[  ] replace sqlite database with postrgres  
+[  ] replace sqlite database with postgres  
 [  ] see if GraphQL provides more flexible querying (see [django-restql](https://github.com/yezyilomo/django-restql))  
 [  ] 
+
+## Questions
+
+_Q. What data standards need to be enforced (allowing nulls, date field standards)?_  
+A.
+
+_Q. Do non-admin level requests require authentication?_  
+A.
+
+_Q. Beyond typical CRUD operations what custom queries are needed ?_  
+A.
+
+
+_Q. Should the DB track versions of questionaires? i.e. be able to look up how an assessment looked on a particular day_  
+A.  
+
+_Q. What are the Cogatlas_node and prop id columns in the references and tasks sheet?_  
+A.
+
+_Q. What are the 'Anirudh left' & 'Anirudh right' columns for?_  
+A.
+
+_Q. Should the strategy be to add the most important columns of each table, or methodically add everything for a single table?_  
+A.  
+
+_Q. what is the purpose of indices_language_not_in_mhdb?_  
+A.  
 
 
 ## Current Schema
 
 To update run
 
-```python
-python manage.py graph_models assessments -o ../models.png
+```bash
+/api$ python manage.py graph_models assessments -o ../models.png
 ```
 
 ![current Entity Relationship Diagram](./models.png)

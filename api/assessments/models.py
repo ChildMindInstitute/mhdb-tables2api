@@ -16,10 +16,15 @@ class Age(models.Model):
 
 class Author(models.Model):
     
-    name = models.CharField(max_length=200, null=True, unique=True)
-    
+    surname = models.CharField(max_length=200,)
+    first_initial = models.CharField(max_length=1, null=True)
+    middle_initial = models.CharField(max_length=1, null=True)
+
     def __str__(self):
-        return f"{self.name}"
+        first = f", {self.first_initial}." if self.first_initial else ""
+        middle = f", {self.middle_initial}." if self.middle_initial else ""
+        return f"{self.name}" + first + middle
+
 
 class Reference(models.Model):
 

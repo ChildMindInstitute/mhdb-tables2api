@@ -126,4 +126,6 @@ def write_fixture_to_json( fixture_lst, fname, output_folder='default'):
                   sort_keys=False, 
                   cls=NumpyEncoder,
                   )
+        
+    print(f'wrote fixture to {fpath}')
     return

@@ -49,3 +49,6 @@ class Disorder(models.Model):
     #  'index_diagnostic_exclusion_criterion2',
     index_severity = models.ForeignKey(Severity, null=True, on_delete=models.SET_NULL)
     note = models.CharField(max_length=500, null=True)
+
+        def __str__(self):
+            return self.disorder

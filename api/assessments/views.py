@@ -5,7 +5,7 @@ from assessments.serializers import QuestionnaireSerializer, AuthorSerializer
 
 class AuthorViewset(viewsets.ModelViewSet):
 
-    queryset = Author.objects.all()
+    queryset = Author.objects.all() #.order_by('surname')
     serializer_class = AuthorSerializer
 
 

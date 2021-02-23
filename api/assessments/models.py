@@ -15,7 +15,6 @@ class Age(models.Model):
     pass
 
 class Author(models.Model):
-    
     surname = models.CharField(max_length=200,)
     first_initial = models.CharField(max_length=1, null=True)
     middle_initial = models.CharField(max_length=1, null=True)
@@ -23,7 +22,7 @@ class Author(models.Model):
     def __str__(self):
         first = f", {self.first_initial}." if self.first_initial else ""
         middle = f", {self.middle_initial}." if self.middle_initial else ""
-        return f"{self.name}" + first + middle
+        return f"{self.surname}" + first + middle
 
 
 class Reference(models.Model):

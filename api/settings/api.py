@@ -12,7 +12,7 @@ router.register(r'author', AuthorViewset)
 router.register(r'questionnaire', QuestionnaireViewset)
 router.register(r'language', LanguageViewset)
 router.register(r'disorder-category', DisorderCategoryViewset)
-router.register(r'disorder-viewset', DisorderViewset)
+router.register(r'disorder', DisorderViewset)
 extra_paths = [
     path('docs/', include_docs_urls(title='MHDB - REST API DOCS'))
 ]

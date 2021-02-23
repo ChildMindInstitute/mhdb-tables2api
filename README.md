@@ -27,7 +27,7 @@ http://127.0.0.1:8000/api/v1/docs
 If the fixtures (for populating the DB) have been created, they can be loaded as follows:
 
 ```bash
-api$ python3 manage.py loaddata .data-ingest/data/processed/fixtures/Language.json
+api$ python3 manage.py loaddata ../data-ingest/data/processed/fixtures/Language.json
 ```
 
 ## Current Schema
@@ -40,9 +40,10 @@ To update run
 
 ![current Entity Relationship Diagram](./models.png)
 
+
 ## To Do
 
-[X] Set Up DRF boilerplate 
+[X] Set Up DRF boilerplate  
 [X] Download google spreadsheets   
 [ -> ] define schema & create models  
 [ -> ] create fixtures to populate the database  
@@ -54,7 +55,18 @@ To update run
 [  ] see if GraphQL provides more flexible querying (see [django-restql](https://github.com/yezyilomo/django-restql))  
 [  ] 
 
+
+## Naming Conventions
+
+**field/column names**: all  in tables are in **snake_case** *e.g. author_name*  
+**models**: all models are in **CamelCase** in singular form (no plurals).  *e.g. a model defing a table for records of books is class Book(models.Model):*  
+**urls**: endpoints for models are in **kebab-case** in singular form e.g.: *the model DisorderCategory has the url disorder-category*  
+
 ## Questions
+
+
+_Q. Are there any considerations for enabling easier conversion to RDF?_  
+A.   
 
 _Q. Should the existing primary indices in the sheets be used as the primary keys in the DB?_  
 A. 
@@ -74,6 +86,7 @@ A.
 _Q. Are there any particular data standards that need to be enforced (no nulls, date field standards)?_  
 A.
 
+
 _Q. Should the DB track versions of questionaires? i.e. be able to look up how an assessment looked on a particular day_  
 A.  not necessary intially. We will just track the date that the assessment was last modified.
 
@@ -85,6 +98,9 @@ A. these are rough work columns and can be ignored
 
 _Q. what is the purpose of indices_language_not_in_mhdb?_   
 A. These are languages that the assessment has been published in, but is not yet available in Mindlogger  
+
+_Q. What do the colored columns indicate?_  
+A.  there have been many different collaborators so there is not a consistent color scheme. It's best to ask about specific sheets in the MHDB slack channel.  
 
 _Q. What are the grey columns indicating?_   
 A. Column is not important and can be ommitted from the DB. It will be assumed that these columns may not exist in future spreadsheets

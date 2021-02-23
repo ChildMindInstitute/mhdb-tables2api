@@ -44,7 +44,8 @@ INSTALLED_APPS = [
 
     # apps
     'assessments',
-    'resources'
+    'resources',
+    'disorders'
 
 ]
 

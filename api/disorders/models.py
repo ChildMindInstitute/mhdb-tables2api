@@ -50,5 +50,5 @@ class Disorder(models.Model):
     index_severity = models.ForeignKey(Severity, null=True, on_delete=models.SET_NULL)
     note = models.CharField(max_length=500, null=True)
 
-        def __str__(self):
-            return self.disorder
+    def __str__(self):
+        return self.disorder

@@ -29,6 +29,18 @@ If the fixtures (for populating the DB) have been created, they can be loaded as
 ```bash
 api$ python3 manage.py loaddata ../data-ingest/data/processed/fixtures/Language.json
 ```
+### DVC
+dvc is used to version control changes to the fixtures data. It's like git for data. Data and the git commits that produced that data should be kept in sync.  
+`dvc pull` will pull latest data versions from the [remote store](https://drive.google.com/drive/folders/1px-GJG4NQl-k9dEFG9ol3U7189nMxVKq?usp=sharing) into the local repo (https://dvc.org/doc/start/data-versioning#retrieving)
+
+
+after updating fixtures, they can added to the remote data store  
+```bash
+data-ingest/data/processed$ dvc add fixtures
+data-ingest/data/processed$ dvc push
+#then add reference file to git repo
+data-ingest/data/processed$ git add -f fixtures.dvc
+```  
 
 ## Current Schema
 

@@ -7,6 +7,8 @@ from django.db import models
 #     pass 
 
 class EquivalentClass(models.Model):
+
+    
     pass
 
 
@@ -14,7 +16,7 @@ class Severity(models.Model):
 
     severity = models.CharField(max_length=50)
     definition = models.CharField(max_length=200)
-    equivalentClasses = models.CharField(max_length=500, null=True)
+    equivalent_classes = models.CharField(max_length=500, null=True)
     # subClassOf
 
 class DisorderCategory(models.Model):
@@ -26,10 +28,17 @@ class DisorderCategory(models.Model):
     def __str__(self):
         return self.name
 
+
 class DiagnosticSpecifier(models.Model):
 
     diagnostic_specifier = models.CharField(max_length=200)
-    equivalentClasses = models.CharField(max_length=500)
+    equivalent_classes = models.CharField(max_length=500)
+
+
+class DiagnosticCriterion(models.Model):
+
+    diagnostic_criterion = models.CharField(max_length=200) 
+    equivalent_classes = models.CharField(max_length=500)
 
 
 class Disorder(models.Model):
@@ -39,7 +48,7 @@ class Disorder(models.Model):
     #  'index_disorder_subsubcategory',
     #  'index_disorder_subsubsubcategory',
     disorder = models.CharField('name of the disorder', max_length=200)
-    equivalentClasses = models.ManyToManyField('EquivalentClass')
+    equivalent_classes = models.ManyToManyField('EquivalentClass')
     icd9cm = models.CharField(max_length=100, null=True)
     icd10cm = models.CharField(max_length=100, null=True)
     index_diagnostic_specifier = models.ForeignKey(DiagnosticSpecifier, null=True, on_delete=models.SET_NULL)

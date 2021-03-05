@@ -77,7 +77,7 @@ To update run
 ## Questions
 
 _Q. In the signs_symptoms sheet of the disorders file, should the red and grey columns be included?_  
-A.
+A. Let's discuss with Anirudh.
 
 _Q. Are there any considerations for enabling easier conversion to RDF?_  
 A.   Not that we can think of right now
@@ -86,7 +86,7 @@ _Q. Should the existing primary indices in the sheets be used as the primary key
 A. Yes
 
 _Q. Is it important to keep the history of the date fields (which show last modified)?_  
-A.
+A. It would be good practice to record when (and in some cases who). 
 
 _Q. Do non-admin level requests require authentication?_   
 A.
@@ -98,7 +98,7 @@ _Q. Should the fields be renamed to a convention or keep the same for ease of re
 A. for now, field names have been kept same as much as possible, but all snake_casing has been maintained throughout
 
 _Q. Are there any particular data standards that need to be enforced (no nulls, date field standards)?_  
-A.
+A. Anything consistent for dates; there will be a lot of empty entries.
 
 
 _Q. Should the DB track versions of questionaires? i.e. be able to look up how an assessment looked on a particular day_  

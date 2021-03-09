@@ -47,7 +47,7 @@ data-ingest/data/processed$ git add -f fixtures.dvc
 To update run
 
 ```bash
-/api$ python manage.py graph_models assessments -o ../models.png
+/api$ python manage.py graph_models assessments disorders -o ../models.png
 ```
 
 ![current Entity Relationship Diagram](./models.png)
@@ -76,51 +76,47 @@ To update run
 
 ## Questions
 
-_Q. In the signs_symptoms sheet of the disorders file, should the red and grey columns be included?_  
-A. Let's discuss with Anirudh.
+**_Q.** In the signs_symptoms sheet of the disorders file, should the red and grey columns be included?_  
+**A.** Let's discuss with Anirudh.
 
-_Q. Are there any considerations for enabling easier conversion to RDF?_  
-A.   Not that we can think of right now
+_**Q.** In the disorders sheet of the disorders file, do index_diagnostic_inclusion_criterion 1 & 2 have specific meanings? or is it just that disorders can have multiple inclusion & exclusion criteria? (In almost all other cases when there are multiple references to another sheet they have been entered as comma separated values in a cell, but in this case there are separate columns for index_diagnostic_inclusion_criterion_1  & index_diagnostic_inclusion_criterion_)_  
+**A.**
 
-_Q. Should the existing primary indices in the sheets be used as the primary keys in the DB?_  
-A. Yes
+_**Q.** Is it important to keep the history of the date fields (which show last modified)?_  
+**A.** It would be good practice to record when (and in some cases who). 
 
-_Q. Is it important to keep the history of the date fields (which show last modified)?_  
-A. It would be good practice to record when (and in some cases who). 
+_**Q.** Should the existing primary indices in the sheets be used as the primary keys in the DB?_  
+**A.** Yes
 
-_Q. Do non-admin level requests require authentication?_   
-A.
+_**Q.** Do non-admin level requests require authentication?_   
+**A.**
 
-_Q. Beyond standard CRUD operations, what queries are needed ?_  
-A.
+_**Q.** Are there any particular data standards that need to be enforced (no nulls, date field standards)?_  
+**A.** Anything consistent for dates; there will be a lot of empty entries.
 
-_Q. Should the fields be renamed to a convention or keep the same for ease of reference (e.g.: index_language -> fk_language)?_  
-A. for now, field names have been kept same as much as possible, but all snake_casing has been maintained throughout
+_**Q.** Should the fields be renamed to a convention or keep the same for ease of reference (e.g.: index_language -> fk_language)?_  
+**A.** for now, field names have been kept same as much as possible, but all snake_casing has been maintained throughout
 
-_Q. Are there any particular data standards that need to be enforced (no nulls, date field standards)?_  
-A. Anything consistent for dates; there will be a lot of empty entries.
+_**Q.** Should the DB track versions of questionaires? i.e. be able to look up how an assessment looked on a particular day_  
+**A.**  not necessary intially. We will just track the date that the assessment was last modified.
 
+_**Q.** What are the Cogatlas_node and prop id columns in the references and tasks sheet?_  
+**A.**  These are references to www.cognitiveatlas.org and can be ignored for now.
 
-_Q. Should the DB track versions of questionaires? i.e. be able to look up how an assessment looked on a particular day_  
-A.  not necessary intially. We will just track the date that the assessment was last modified.
+_**Q.** What are the 'Anirudh left' & 'Anirudh right' columns for?_   
+**A.** these are rough work columns and can be ignored
 
-_Q. What are the Cogatlas_node and prop id columns in the references and tasks sheet?_  
-A.  These are references to www.cognitiveatlas.org and can be ignored for now.
+_**Q.** what is the purpose of indices_language_not_in_mhdb?_   
+**A.** These are languages that the assessment has been published in, but is not yet available in Mindlogger  
 
-_Q. What are the 'Anirudh left' & 'Anirudh right' columns for?_   
-A. these are rough work columns and can be ignored
+_**Q.** What do the colored columns indicate?_  
+**A.**  there have been many different collaborators so there is not a consistent color scheme. It's best to ask about specific sheets in the MHDB slack channel.  
 
-_Q. what is the purpose of indices_language_not_in_mhdb?_   
-A. These are languages that the assessment has been published in, but is not yet available in Mindlogger  
+_**Q.** What are the grey columns indicating?_   
+**A.** Column is not important and can be ommitted from the DB. It will be assumed that these columns may not exist in future spreadsheets
 
-_Q. What do the colored columns indicate?_  
-A.  there have been many different collaborators so there is not a consistent color scheme. It's best to ask about specific sheets in the MHDB slack channel.  
-
-_Q. What are the grey columns indicating?_   
-A. Column is not important and can be ommitted from the DB. It will be assumed that these columns may not exist in future spreadsheets
-
-_Q. which sheets are most important?_  
-A. Disorders, Questionnaire, Anirudh will provide a more detailed list soon 
+_**Q.** which sheets are most important?_  
+**A.** Disorders, Asessments. Questionnaire, see Anirudh's google doc for more detailed
 
 
 ## Notes & references

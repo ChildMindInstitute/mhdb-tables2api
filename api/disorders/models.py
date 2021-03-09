@@ -1,13 +1,12 @@
 from django.db import models
 
-# class Icd9cm(models.model):	
-#     pass
+class Icd9Cm(models.Model):
+    icd9cm = models.CharField(max_length=50)
 
-# class Icd10cm(models.model):
-#     pass 
+class Icd10Cm(models.Model):
+    icd10cm = models.CharField(max_length=50)
 
 class EquivalentClass(models.Model):
-
     
     pass
 
@@ -49,8 +48,8 @@ class Disorder(models.Model):
     #  'index_disorder_subsubsubcategory',
     disorder = models.CharField('name of the disorder', max_length=200)
     equivalent_classes = models.ManyToManyField('EquivalentClass')
-    icd9cm = models.CharField(max_length=100, null=True)
-    icd10cm = models.CharField(max_length=100, null=True)
+    icd9cm = models.CharField(max_length=100, null=True) # needs to be changed to a ManyToManyField
+    icd10cm = models.CharField(max_length=100, null=True) # needs to be changed to a ManyToManyField
     index_diagnostic_specifier = models.ForeignKey(DiagnosticSpecifier, null=True, on_delete=models.SET_NULL)
     #  'index_diagnostic_inclusion_criterion',
     #  'index_diagnostic_inclusion_criterion2',
